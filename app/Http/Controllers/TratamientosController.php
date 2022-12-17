@@ -50,8 +50,10 @@ class TratamientosController extends Controller
             'detalles'=>$request->detalles,
         ];
 
-        Tratamiento::create($datos);
-        return redirect()->route('tratamientos');
+        $t = Tratamiento::create($datos);
+
+
+        return redirect()->route('tratamientos.proceder',$t->id);
     }
 
     /**

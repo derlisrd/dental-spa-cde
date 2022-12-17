@@ -25,6 +25,12 @@
                 @endif
                 <form method="post" action="{{ route('tratamientos.store') }}">
                     @csrf
+
+                    <div class="form-group">
+
+
+
+                    </div>
                     <div class="form-group">
                         <select required class="form-control form-control-lg mb-3 @if($errors->has('servicio_id')) is-invalid @endif" name="servicio_id" required>
                             <option selected disabled>Seleccione servicio</option>
@@ -57,7 +63,7 @@
 
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+                        <button type="submit" class="btn btn-primary btn-lg">Agregar</button>
                     </div>
                 </form>
             </div>
@@ -66,3 +72,5 @@
 </div>
 
 @endsection
+
+

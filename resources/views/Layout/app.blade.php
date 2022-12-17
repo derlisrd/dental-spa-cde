@@ -8,7 +8,8 @@
 
     <link rel="stylesheet" href="{{ URL('assets/css/adminlte.min.css') }}">
     <link rel="stylesheet" href="{{ URL('assets/font-icons/all.min.css') }}">
-
+    <link rel="stylesheet" href="{{ URL('assets/css/styles.css') }}">
+    @livewireStyles
 
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -51,9 +52,9 @@
 
     <script src="{{ URL('assets/js/jquery.min.js') }}"></script>
     <script src="{{ URL('assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ URL('assets/js/adminlte.js') }}"></script>
+    @livewireScripts
 
     @yield('scripts')
-    <script src="{{ URL('assets/js/adminlte.js') }}"></script>
-
 </body>
 </html>
