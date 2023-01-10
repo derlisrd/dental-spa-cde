@@ -9,12 +9,10 @@
 
 <div class="row">
     <div class="col-12">
+        <h3>Agregar nuevo empleado</h3>
+    </div>
+    <div class="col-12">
         <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Agregar nuevo empleado</h3>
-
-            </div>
-            <!-- /.card-header -->
             <div class="card-body">
                 @if ($errors->any())
                     <div class="alert alert-info d-block">
@@ -25,25 +23,25 @@
                 @endif
                 <form method="post" action="{{ route('empleados.store') }}">
                     @csrf
-                    <div class="form-group">
-                        <input type="text" autofocus class="form-control form-control-lg @if($errors->has('doc')) is-invalid @endif" autocomplete="off" name="doc" value="{{ old('doc') }}" >
+                    <div class="form-group mb-4">
+                        <input type="text" autofocus class="form-control @if($errors->has('doc')) is-invalid @endif" autocomplete="off" name="doc" value="{{ old('doc') }}" >
                         <small class="form-text text-muted">Documento</small>
                     </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control form-control-lg @if($errors->has('nombre')) is-invalid @endif" autocomplete="off" name="nombre" value="{{ old('nombre') }}" >
+                    <div class="form-group mb-4">
+                        <input type="text" class="form-control @if($errors->has('nombre')) is-invalid @endif" autocomplete="off" name="nombre" value="{{ old('nombre') }}" >
                         <small class="form-text text-muted">Nombre</small>
                     </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control form-control-lg @if($errors->has('apellido')) is-invalid @endif" name="apellido" value="{{ old('apellido') }}" >
+                    <div class="form-group mb-4">
+                        <input type="text" class="form-control @if($errors->has('apellido')) is-invalid @endif" name="apellido" value="{{ old('apellido') }}" >
                         <small class="form-text text-muted">Apellido</small>
                     </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control form-control-lg @if($errors->has('labor')) is-invalid @endif " name="labor" value="{{ old('labor') }}" >
+                    <div class="form-group mb-4">
+                        <input type="text" class="form-control @if($errors->has('labor')) is-invalid @endif " name="labor" value="{{ old('labor') }}" >
                         <small class="form-text text-muted">Labor</small>
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+                        <button type="submit" class="btn btn-primary mb-4 rounded">Registrar</button>
                     </div>
                 </form>
             </div>

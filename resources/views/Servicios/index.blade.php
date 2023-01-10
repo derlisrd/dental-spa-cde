@@ -8,12 +8,11 @@
 @section('container')
     <div class="row">
         <div class="col-12">
+            <h3>Servicios</h3>
+            <a href="{{ route('servicios.add') }}" class="btn btn-primary rounded mb-4">Agregar</a>
+        </div>
+        <div class="col-12">
             <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title"></h3>
-                    <a href="{{ route('servicios.add') }}" class="btn btn-primary btn-lg ">Agregar</a>
-                </div>
-                <!-- /.card-header -->
                 <div class="card-body">
                     <table id="table1" class="table table-bordered table-hover">
                         <thead>
@@ -54,34 +53,5 @@
             </div>
         </div>
     </div>
-
-@endsection
-
-@section('scripts')
-    <script src="{{ URL('assets/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ URL('assets/js/dataTables.bootstrap4.min.js') }}"></script>
-
-
-    <script src="{{ URL('assets/js/dataTables.buttons.min.js') }}"></script>
-
-    <script src="{{ URL('assets/js/buttons.bootstrap4.min.js') }}"></script>
-
-    <script>
-        $(function() {
-            /* $("#example1").DataTable({
-              "responsive": true, "lengthChange": false, "autoWidth": false,
-              "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)'); */
-            $('#table1').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": true,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-        });
-    </script>
 
 @endsection

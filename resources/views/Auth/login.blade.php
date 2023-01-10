@@ -27,27 +27,27 @@
 
                 <!-- Email input -->
                 <div class="form-outline mb-4">
-                  <input type="email" name="email" value="{{ old('email') }}" autofocus  class="form-control form-control-lg" />
-                  <label class="form-label" for="form1Example13">Email </label>
+                  <input name="email" id="email" value="{{ old('email') }}" autofocus  class="form-control" />
+                  <label class="form-label" for="email">User o email </label>
                 </div>
 
                 <!-- Password input -->
                 <div class="form-outline mb-4">
-                  <input type="password" id="form1Example23" name="password" class="form-control form-control-lg" />
-                  <label class="form-label" for="form1Example23">Contraseña</label>
+                  <input type="password" id="pass" name="password" class="form-control" />
+                  <label class="form-label" for="pass">Contraseña</label>
                 </div>
 
                 <div class="d-flex justify-content-around align-items-center mb-4">
                   <!-- Checkbox -->
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
-                    <label class="form-check-label" for="form1Example3"> Recordar </label>
+                  <div class="form-check" >
+                    <input class="form-check-input" id="remember" type="checkbox" name="remember" />
+                    <label class="form-check-label" role="button" for="remember"> Recordar </label>
                   </div>
 
                 </div>
 
                 <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Entrar</button>
+                <button type="submit" class="btn btn-primary btn-block">Entrar</button>
 
 
 

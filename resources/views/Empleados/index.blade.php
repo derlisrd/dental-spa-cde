@@ -9,11 +9,11 @@
 
 <div class="row">
     <div class="col-12">
+        <h3>Empleados</h3>
+        <a href="{{ route('empleados.add') }}" class="btn btn-primary mb-4 rounded">Agregar</a>
+    </div>
+    <div class="col-12">
         <div class="card">
-            <div class="card-header">
-                <h3 class="card-title"></h3>
-                <a href="{{ route('empleados.add') }}" class="btn btn-primary btn-lg ">Agregar</a>
-            </div>
             <!-- /.card-header -->
             <div class="card-body">
                 <table id="table1" class="table table-bordered table-hover">

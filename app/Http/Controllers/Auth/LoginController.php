@@ -17,23 +17,28 @@ class LoginController extends Controller
         ];
     }
 
-    public function login(Request $request)
+    public function login(Request $r)
     {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
+        $r->validate([
+            'email' => ['required'],
             'password' => ['required'],
         ]);
 
-        $email = $credentials['email'];
-        $password = $credentials['password'];
+        $email = $r->email;
+        $password = $r->password;
+        $remember = $r->remember;
 
-        if (Auth::attempt(['email' => $email, 'password' => $password])) {
-            $request->session()->regenerate();
+        $intento = filter_var($email, FILTER_VALIDATE_EMAIL) ?
+        ['email' => $email, 'password' => $password, 'active' => 1] :
+        ['username' => $email, 'password' => $password, 'active' => 1];
+
+        if (Auth::attempt($intento,$remember)) {
+            $r->session()->regenerate();
             return redirect()->route('home');
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => 'Las credenciales no son correctas',
         ])->onlyInput('email');
     }
 

@@ -1,60 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> @yield('title','Dental Spa') </title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/x-icon" href="{{ URL('assets/images/favicon.ico') }}">
+    <title>
+        @yield('title','Admin')
+    </title>
+    <link href="{{ URL('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ URL('assets/icons/all.min.css') }}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;600&family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link href="{{ URL('assets/css/style.css') }}" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ URL('assets/css/adminlte.min.css') }}">
-    <link rel="stylesheet" href="{{ URL('assets/font-icons/all.min.css') }}">
-    <link rel="stylesheet" href="{{ URL('assets/css/styles.css') }}">
+    <link href="{{ URL('assets/css/sweetalert2.min.css') }}" rel="stylesheet">
+    @yield('styles')
+
     @livewireStyles
 
 </head>
-<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
-    {{-- <div class="preloader flex-column justify-content-center align-items-center">
-        <img class="animation__wobble" src="{{ URL('assets/img/loading.svg') }}" alt="AdminLTELogo" height="60" width="60">
-    </div> --}}
+<body>
 
-    @include('Layout.navbar')
-    @include('Layout.menu')
+    <div class='dashboard'>
+        @include('Layout.menu')
 
-    <div class="content-wrapper">
-
-        <section class="content-header">
-            <div class="container-fluid">
-              <div class="row mb-2">
-                <div class="col-sm-6">
-                  <h1>@yield('title2','')</h1>
+        <div class='dashboard-app'>
+            <header class='dashboard-toolbar'>
+                <span class="menu-toggle cursor-pointer"><i class="fas fa-bars"></i></span>
+                <div class="d-flex flex-row-reverse w-100">
+                    <small class="text-muted"> {{ Auth::user()->name }} <i class="fa fa-user"></i></small>
                 </div>
-                <div class="col-sm-6">
-                  <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                  </ol>
-                </div>
-              </div>
-            </div><!-- /.container-fluid -->
-          </section>
+            </header>
 
-    <section class="content">
-        <div class="container-fluid">
-            @yield('container')
+
+            <div class='dashboard-content'>
+
+                 @yield('container')
+
+            </div>
         </div>
-    </section>
+
+
     </div>
-    <footer class="main-footer">
-        <div class="float-right d-none d-sm-block">
-          <b>Version</b> 1.0
-        </div>
-        <strong>Hecho con amor por <a href="#">Saeta sistema</a></strong>
-    </footer>
 
-    <script src="{{ URL('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ URL('assets/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ URL('assets/js/adminlte.js') }}"></script>
-    @livewireScripts
 
+    <script src='{{ URL('assets/js/jquery.min.js') }}'></script>
+    <script src='{{ URL('assets/js/bootstrap.bundle.min.js') }}'></script>
+    <script src="{{ URL('assets/js/script.js') }}"></script>
+    <script src="{{ URL('assets/js/sweetalert2.min.js') }}"></script>
     @yield('scripts')
+    @livewireScripts
 </body>
 </html>

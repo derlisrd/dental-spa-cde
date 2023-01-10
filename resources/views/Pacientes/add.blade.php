@@ -11,7 +11,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Agregar nuevo paciente</h3>
+                <h3 class="card-title">Registrar nuevo paciente</h3>
 
             </div>
             <!-- /.card-header -->
@@ -26,27 +26,27 @@
                 <form method="post" action="{{ route('pacientes.store') }}">
                     @csrf
                     <div class="form-group">
-                        <input type="text" autofocus class="form-control form-control-lg" name="nombre" value="{{ old('nombre') }}" >
+                        <input type="text" autofocus class="form-control" name="nombre" value="{{ old('nombre') }}" >
                         <small class="form-text text-muted">Nombre</small>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-lg" name="apellido" value="{{ old('apellido') }}" >
+                        <input type="text" class="form-control" name="apellido" value="{{ old('apellido') }}" >
                         <small class="form-text text-muted">Apellido</small>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-lg" name="doc" value="{{ old('doc') }}" >
+                        <input type="text" class="form-control" name="doc" value="{{ old('doc') }}" >
                         <small class="form-text text-muted">Documento</small>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-lg" name="edad" value="{{ old('edad') }}" >
+                        <input type="text" class="form-control" name="edad" value="{{ old('edad') }}" >
                         <small class="form-text text-muted">Edad</small>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-lg" name="contacto" value="{{ old('contacto') }}" >
+                        <input type="text" class="form-control" name="contacto" value="{{ old('contacto') }}" >
                         <small class="form-text text-muted">Contacto</small>
                     </div>
                     <div class="form-group">
-                        <select class="form-control form-control-lg" name="sexo">
+                        <select class="form-control" name="sexo">
                         <option selected disabled>Seleccionar sexo</option>
                         <option value="0">Femenino</option>
                         <option value="1">Masculino</option>
@@ -54,7 +54,7 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+                        <button type="submit" class="btn btn-primary mt-4">Registrar</button>
                     </div>
                 </form>
             </div>
