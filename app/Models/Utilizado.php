@@ -8,7 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Utilizado extends Model
 {
     use HasFactory;
-    protected $table = 'utilizado';
-
+    protected $table = 'utilizados';
     protected $fillable = ['tratamiento_id','insumo_id','cantidad'];
+
+    public function tratamiento (){
+        return $this->belongsTo(Tratamiento::class,'id');
+    }
+
 }

@@ -36,9 +36,9 @@
 
 
             <div class='dashboard-content'>
-
-                 @yield('container')
-
+                <div class="container">
+                    @yield('container')
+                </div>
             </div>
         </div>
 

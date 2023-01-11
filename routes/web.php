@@ -50,6 +50,8 @@ Route::group(['prefix'=>'admin','middleware'=>['auth']],function(){
         Route::post('tratamientos/store',[TratamientosController::class,'store'])->name('tratamientos.store');
 
         Route::get('tratamiento/utilizado/{id}',[UtilizadosController::class,'proceder'])->name('tratamientos.proceder');
+        Route::post('tratamiento/procesar',[UtilizadosController::class,'procesar'])->name('tratamiento.procesar');
+
 
         Route::get('empleados',[EmpleadosController::class,'index'])->name('empleados');
         Route::view('empleados/add','Empleados.add')->name('empleados.add');

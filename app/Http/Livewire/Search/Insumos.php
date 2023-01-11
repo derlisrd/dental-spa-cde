@@ -9,7 +9,7 @@ class Insumos extends Component
 {
     public $search;
     public $insumos;
-    public $id ;
+    public $insumo_id ;
     public $codigo = '';
     public $selected = '';
     public $showdiv = false;
@@ -25,7 +25,7 @@ class Insumos extends Component
         $this->codigo = $record->codigo;
         $this->medida = $record->medida;
         $this->search = $record->id;
-        $this->id = $record->id;
+        $this->insumo_id = $record->id;
         $this->selected = $record->nombre;
         $this->showdiv = false;
     }
