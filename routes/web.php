@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AbonosController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\EmpleadosController;
 use App\Http\Controllers\FichasController;
@@ -49,9 +50,9 @@ Route::group(['prefix'=>'admin','middleware'=>['auth']],function(){
         Route::get('tratamientos/add',[TratamientosController::class,'add'])->name('tratamientos.add');
         Route::post('tratamientos/store',[TratamientosController::class,'store'])->name('tratamientos.store');
 
-        Route::get('tratamiento/utilizado/{id}',[UtilizadosController::class,'proceder'])->name('tratamientos.proceder');
-        Route::post('tratamiento/procesar',[UtilizadosController::class,'procesar'])->name('tratamiento.procesar');
-
+        Route::get('tratamiento/utilizado/{id}',[UtilizadosController::class,'proceder'])->name('utilizado.tratamiento.proceder');
+        Route::post('tratamiento/procesar',[UtilizadosController::class,'procesar'])->name('utilizado.tratamiento.procesar');
+        Route::get('abonos/{id}',[AbonosController::class,'find'])->name('abono');
 
         Route::get('empleados',[EmpleadosController::class,'index'])->name('empleados');
         Route::view('empleados/add','Empleados.add')->name('empleados.add');

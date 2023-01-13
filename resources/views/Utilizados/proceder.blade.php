@@ -7,7 +7,7 @@
 
 @section('container')
 
-<form action="{{ route('tratamiento.procesar') }}" method="post">
+<form action="{{ route('utilizado.tratamiento.procesar') }}" method="post">
     @csrf
     <input type="hidden" name="tratamiento_id" value="{{ $id }}" />
 <div class="row">

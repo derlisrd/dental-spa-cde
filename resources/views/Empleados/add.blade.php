@@ -32,11 +32,11 @@
                         <small class="form-text text-muted">Nombre</small>
                     </div>
                     <div class="form-group mb-4">
-                        <input type="text" class="form-control @if($errors->has('apellido')) is-invalid @endif" name="apellido" value="{{ old('apellido') }}" >
+                        <input type="text" class="form-control @if($errors->has('apellido')) is-invalid @endif" autocomplete="off" name="apellido" value="{{ old('apellido') }}" >
                         <small class="form-text text-muted">Apellido</small>
                     </div>
                     <div class="form-group mb-4">
-                        <input type="text" class="form-control @if($errors->has('labor')) is-invalid @endif " name="labor" value="{{ old('labor') }}" >
+                        <input type="text" class="form-control @if($errors->has('labor')) is-invalid @endif" autocomplete="off" name="labor" value="{{ old('labor') }}" >
                         <small class="form-text text-muted">Labor</small>
                     </div>
 

@@ -25,8 +25,8 @@ class UtilizadosController extends Controller
         ->select('pacientes.nombre','pacientes.apellido','pacientes.doc','pacientes.id')
         ->join('tratamientos','tratamientos.paciente_id','=','pacientes.id')
         ->where(['tratamientos.id' => $id])
-        ->first()
-        ;
+        ->first();
+
 
         return view('Utilizados.proceder',compact('id','utilizados','paciente'));
     }

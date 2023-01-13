@@ -9,7 +9,7 @@ class Tratamiento extends Model
 {
     use HasFactory;
     protected $table = 'tratamientos';
-    protected $fillable = ['servicio_id','empleado_id','utilizado_id','paciente_id','detalles','finalizado','sesion'];
+    protected $fillable = ['servicio_id','empleado_id','utilizado_id','paciente_id','detalles','finalizado','sesion','valor_total'];
 
     public function empleado (){
         return $this->belongsTo(Empleado::class,'empleado_id');

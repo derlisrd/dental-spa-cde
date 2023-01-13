@@ -35,15 +35,19 @@
             Empleados
         </a>
 
+
+
         <a href="{{ route('insumos') }}" class="dashboard-nav-item {{ request()->routeIs('insumos*') ? 'active' : '' }}">
             <i class="fas fa-th"></i>
             Insumos
         </a>
-        <a href="{{ route('usuarios') }}" class="dashboard-nav-item {{ request()->routeIs('usuarios*') ? 'active' : '' }}">
-            <i class="fas fa-user"></i>
-            Usuarios
-        </a>
 
+        <div class='dashboard-nav-dropdown {{ request()->routeIs('usuarios*') ? 'show' : '' }}'>
+            <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-users"></i> Usuarios </a>
+            <div class='dashboard-nav-dropdown-menu'>
+                <a href="{{ route('usuarios') }}" class="dashboard-nav-dropdown-item {{ request()->routeIs('users') ? 'active' : '' }}">Todos</a>
+            </div>
+        </div>
 
 
 

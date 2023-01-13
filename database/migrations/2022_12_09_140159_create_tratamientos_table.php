@@ -18,6 +18,7 @@ class CreateTratamientosTable extends Migration
             $table->unsignedBigInteger('servicio_id');
             $table->unsignedBigInteger('empleado_id');
             $table->unsignedBigInteger('paciente_id');
+            $table->float('valor_total');
             $table->integer('sesion')->nullable();
             $table->text('detalles')->nullable();
             $table->boolean('finalizado')->default(0);

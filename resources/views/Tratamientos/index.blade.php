@@ -33,7 +33,7 @@
                             <td>{{ $s->paciente->nombre . ' '.$s->paciente->apellido }}</td>
                             <td>{{ $s->empleado->nombre . ' '.$s->empleado->apellido }}</td>
                             <td>
-                                <a href="{{ route('tratamientos.proceder', $s->id ) }}" class="btn btn-primary">Proceder</a>
+                                <a href="{{ route('utilizado.tratamiento.proceder', $s->id ) }}" class="btn btn-primary">Proceder</a>
                                 <a href="#{{ $s->id }}" class="btn btn-danger">Finalizar</a>
                             </td>
                         </tr>

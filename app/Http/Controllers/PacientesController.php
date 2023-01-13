@@ -18,7 +18,7 @@ class PacientesController extends Controller
         $request->validate([
             'nombre'=> ['required'],
             'apellido'=> ['required'],
-            'edad'=>['required'],
+            'edad'=>['required','numeric'],
             'sexo'=>['required'],
             'doc'=>['required'],
             'contacto'=>['required']

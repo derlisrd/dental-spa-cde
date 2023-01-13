@@ -24,18 +24,12 @@
                 <form method="post" action="{{ route('tratamientos.store') }}">
                     @csrf
 
-                    <div class="form-group">
-
-
-
-                    </div>
                     <div class="form-group mb-3">
-                        <select required class="form-control @if($errors->has('servicio_id')) is-invalid @endif" name="servicio_id" required>
-                            <option selected disabled>Seleccione servicio</option>
-                            @foreach ($servicios as $s)
-                                <option value="{{ $s->id }}">{{ $s->codigo." ".$s->descripcion }}</option>
-                            @endforeach
-                        </select>
+                        @livewire('search.pacientes')
+                    </div>
+
+                    <div class="form-group mb-3">
+                        @livewire('search.servicios')
                     </div>
                     <div class="form-group mb-3">
                         <select required class="form-control @if($errors->has('empleado_id')) is-invalid @endif" name="empleado_id" required>
@@ -44,16 +38,14 @@
                                 <option value="{{ $s->id }}">{{ $s->nombre ." ". $s->apellido }} </option>
                             @endforeach
                         </select>
+                        <small class="form-text text-muted">Empleado encargado</small>
                     </div>
 
                     <div class="form-group mb-3">
-                        <select required class="form-control @if($errors->has('paciente_id')) is-invalid @endif" name="paciente_id" required>
-                            <option selected disabled>Seleccione paciente</option>
-                            @foreach ($pacientes as $s)
-                                <option value="{{ $s->id }}">{{ $s->nombre ." ".$s->apellido ." ".$s->doc}}</option>
-                            @endforeach
-                        </select>
+                        <input class="form-control" autocomplete="off" name="abono_valor" value="{{ old('abono_valor') }}" >
+                        <small class="form-text text-muted">Abono o entrega</small>
                     </div>
+
                     <div class="form-group mb-3">
                         <input type="text" class="form-control" autocomplete="off" name="descripcion" value="{{ old('detalles') }}" >
                         <small class="form-text text-muted">Detalles</small>

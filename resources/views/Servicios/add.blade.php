@@ -9,12 +9,10 @@
 
 <div class="row">
     <div class="col-12">
+        <h3>Agregar servicio</h3>
+    </div>
+    <div class="col-12">
         <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Agregar nuevo servicio</h3>
-
-            </div>
-            <!-- /.card-header -->
             <div class="card-body">
                 <form method="post" action="{{ route('servicios.store') }}">
                     @csrf
@@ -36,7 +34,7 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary mt-4">Guardar</button>
+                        <button type="submit" class="btn btn-primary rounded mt-4">Registrar</button>
                     </div>
                 </form>
             </div>
@@ -47,3 +45,6 @@
 @endsection
 
 
+@section('scripts')
+
+@endsection
