@@ -61,7 +61,9 @@ Route::group(['prefix'=>'admin','middleware'=>['auth']],function(){
         Route::post('empleados/store',[EmpleadosController::class,'store'])->name('empleados.store');
 
         Route::get('comisiones',[ComisionesController::class,'index'])->name('empleados.comisiones');
-
+        Route::post('comisiones',[ComisionesController::class,'index'])->name('empleados.comisiones.search');
+        Route::get('comisiones/pagar/{id}',[ComisionesController::class,'pagar'])->name('empleados.comisiones.pagar');
+        Route::put('comisiones/pagar/{id}',[ComisionesController::class,'pagar_update'])->name('empleados.comisiones.pagar.update');
 
         Route::get('servicios',[ServiciosController::class,'index'])->name('servicios');
         Route::view('servicios/add','Servicios.add')->name('servicios.add');
