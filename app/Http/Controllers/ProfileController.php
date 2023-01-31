@@ -38,7 +38,7 @@ class ProfileController extends Controller
 
         $user->save();
 
-        return redirect()->route('profile')->with('updated',true);
+        return redirect()->route('users.profile')->with('updated',true);
 
     }
 
