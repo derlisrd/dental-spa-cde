@@ -17,7 +17,7 @@ class CreateAbonosTable extends Migration
             $table->id();
             $table->foreignId('paciente_id')->nullable()->constrained('pacientes')->cascadeOnUpdate()->nullOnDelete();
             $table->foreignId('tratamiento_id')->nullable()->constrained('tratamientos')->cascadeOnUpdate()->nullOnDelete();
-            $table->double('abono_valor');
+            $table->double('abono_valor',20);
             $table->timestamps();
         });
     }

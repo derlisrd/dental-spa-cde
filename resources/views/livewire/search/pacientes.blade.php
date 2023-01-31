@@ -1,12 +1,5 @@
 <div>
-    @empty(!$selected)
-    <div class="alert alert-info">
-        Doc: {{ $doc }}  {{ $nombre_completo }}
-    </div>
-    <div class="form-group mb-3">
-        <input type="hidden" name="paciente_id" value="{{ $paciente_id }}" />
-    </div>
-    @endempty
+
     <div class="search-box">
         <div class="form-group">
         <input class="form-control" autofocus name="search" autocomplete="off" wire:model="search" wire:keyup="SearchResult" placeholder="Buscar paciente..."/>
@@ -22,4 +15,12 @@
         </ul>
         @endif
     </div>
+    @empty(!$selected)
+    <div class="alert alert-info">
+        Doc: {{ $doc }}  {{ $nombre_completo }}
+    </div>
+    <div class="form-group mb-3">
+        <input type="hidden" name="paciente_id" value="{{ $paciente_id }}" />
+    </div>
+    @endempty
 </div>

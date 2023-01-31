@@ -13,12 +13,11 @@
         <a href="{{ route('empleados.add') }}" class="btn btn-primary mb-4 rounded">Agregar</a>
     </div>
     <div class="col-12">
-        <div class="card">
-            <!-- /.card-header -->
-            <div class="card-body">
-                <table id="table1" class="table table-bordered table-hover">
-                    <thead>
-                        <tr>
+
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr class="table-dark">
                             <th>Doc</th>
                             <th>Nombre</th>
                             <th>Apellido</th>
@@ -40,21 +39,10 @@
                     @endforeach
 
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>Doc</th>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Labor</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </tfoot>
                 </table>
-            </div>
-            <!-- /.card-body -->
-        </div>
+
     </div>
 </div>
-
+</div>
 @endsection
 

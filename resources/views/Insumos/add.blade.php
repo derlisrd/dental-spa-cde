@@ -32,8 +32,12 @@
                         <small class="form-text text-muted">Nombre y descripcion</small>
                     </div>
                     <div class="form-group mb-4">
-                        <input type="text" class="form-control" name="medida" value="{{ old('medida') }}" >
-                        <small class="form-text text-muted">Medida (Litro, ml, unidad)</small>
+                        <select class="form-control" name="medida">
+                            <option selected disabled>Seleccionar medida</option>
+                            <option value="ml">ml</option>
+                            <option value="litros">Litros</option>
+                            <option value="gramos">Gramos</option>
+                            </select>
                     </div>
                     <div class="form-group mb-4">
                         <input type="text" class="form-control" name="cantidad" value="{{ old('cantidad') }}" >

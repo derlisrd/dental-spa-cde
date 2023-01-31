@@ -12,50 +12,35 @@
             <a href="{{ route('pacientes.add') }}" class="rounded btn btn-primary mb-3">Agregar</a>
         </div>
         <div class="col-12">
-            <div class="card">
-                <!-- /.card-header -->
-                <div class="card-body">
-                    <table id="table1" class="table table-bordered table-hover">
-                        <thead>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="table-dark">
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Edad</th>
+                            <th>Sexo</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($pacientes as $paciente)
                             <tr>
-                                <th>Nombre</th>
-                                <th>Apellido</th>
-                                <th>Edad</th>
-                                <th>Sexo</th>
-                                <th>Acciones</th>
+                                <td>{{ $paciente->nombre }}</td>
+                                <td>{{ $paciente->apellido }}</td>
+                                <td>{{ $paciente->edad }}</td>
+                                <td>{{ $paciente->sexo ? 'Masc' : 'Fem' }}</td>
+                                <td>
+                                    <a href="{{ route('ficha', $paciente->id) }}" class="btn btn-primary">Ver ficha</a>
+                                    <a href="{{ route('ficha', $paciente->id) }}" class="btn btn-primary">Editar</a>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($pacientes as $paciente)
-                                <tr>
-                                    <td>{{ $paciente->nombre }}</td>
-                                    <td>{{ $paciente->apellido }}</td>
-                                    <td>{{ $paciente->edad }}</td>
-                                    <td>{{ $paciente->sexo ? 'Masc' : 'Fem' }}</td>
-                                    <td>
-                                        <a href="{{ route('ficha',$paciente->id) }}" class="btn btn-primary">Ver ficha</a>
-                                        <a href="{{ route('ficha',$paciente->id) }}" class="btn btn-primary">Editar</a>
-                                    </td>
-                                </tr>
-                            @endforeach
+                        @endforeach
 
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Apellido</th>
-                                <th>Edad</th>
-                                <th>Sexo</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-                <!-- /.card-body -->
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 
 @endsection
-
-

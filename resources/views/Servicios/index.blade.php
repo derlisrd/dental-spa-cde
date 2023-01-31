@@ -12,11 +12,12 @@
             <a href="{{ route('servicios.add') }}" class="btn btn-primary rounded mb-4">Agregar</a>
         </div>
         <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <table id="table1" class="table table-bordered table-hover">
-                        <thead>
-                            <tr>
+
+
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="table-dark">
                                 <th>Codigo</th>
                                 <th>Descripcion</th>
                                 <th>Precio</th>
@@ -38,18 +39,7 @@
                             @endforeach
 
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Codigo</th>
-                                <th>Descripcion</th>
-                                <th>Precio</th>
-                                <th>Comision</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </tfoot>
                     </table>
-                </div>
-                <!-- /.card-body -->
             </div>
         </div>
     </div>

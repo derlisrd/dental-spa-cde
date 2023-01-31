@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Abono;
+use App\Models\Comisiones;
 use App\Models\Empleado;
 use App\Models\Paciente;
 use App\Models\Servicio;
@@ -41,6 +42,8 @@ class TratamientosController extends Controller
             'valor_total'=>['required','numeric']
         ]);
 
+
+
         $datos = [
             'empleado_id'=> $request->empleado_id,
             'servicio_id'=> $request->servicio_id,
@@ -48,8 +51,20 @@ class TratamientosController extends Controller
             'detalles'=>$request->detalles,
             'valor_total'=>$request->valor_total
         ];
-
         $t = Tratamiento::create($datos);
+
+        $comision_calculado = $request->valor_total * $request->porcentaje_comision_servicio / 100;
+
+
+        Comisiones::create([
+            'paciente_id'=>$request->paciente_id,
+            'empleado_id'=> $request->empleado_id,
+            'tratamiento_id'=>$t->id,
+            'servicio_id'=>$request->servicio_id,
+            'valor_total'=>$request->valor_total,
+            'valor_comision'=>$comision_calculado
+        ]);
+
         Abono::create([
             'paciente_id'=>$request->paciente_id,
             'tratamiento_id'=>$t->id,

@@ -2,13 +2,15 @@
 
 use App\Http\Controllers\AbonosController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ComisionesController;
 use App\Http\Controllers\EmpleadosController;
 use App\Http\Controllers\FichasController;
 use App\Http\Controllers\InsumosController;
 use App\Http\Controllers\PacientesController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiciosController;
 use App\Http\Controllers\TratamientosController;
-use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\UsersController;
 use App\Http\Controllers\UtilizadosController;
 use App\Http\Controllers\VentasController;
 use Illuminate\Support\Facades\Route;
@@ -32,7 +34,6 @@ Route::post('/admin',[LoginController::class,'login'])->name('login.post')->midd
 Route::group(['prefix'=>'admin','middleware'=>['auth']],function(){
 
 
-    Route::middleware(['auth'])->group(function () {
         Route::get('home', function () { return view('index');})->name('home');
 
         Route::get('pacientes',[PacientesController::class,'index'])->name('pacientes');
@@ -59,17 +60,26 @@ Route::group(['prefix'=>'admin','middleware'=>['auth']],function(){
         Route::get('empleados/edit/{id}',[EmpleadosController::class,'edit'])->name('empleados.edit');
         Route::post('empleados/store',[EmpleadosController::class,'store'])->name('empleados.store');
 
+        Route::get('comisiones',[ComisionesController::class,'index'])->name('empleados.comisiones');
+
+
         Route::get('servicios',[ServiciosController::class,'index'])->name('servicios');
         Route::view('servicios/add','Servicios.add')->name('servicios.add');
         Route::post('servicios/store',[ServiciosController::class,'store'])->name('servicios.store');
 
         Route::get('ventas',[VentasController::class,'index'])->name('ventas');
 
+        Route::get('/users',[UsersController::class,'index'])->name('users');
+        Route::get('/users/create',[UsersController::class,'create'])->name('users.create');
+        Route::post('/users',[UsersController::class,'store'])->name('users.store');
 
-    Route::get('usuarios',[UsuariosController::class,'index'])->name('usuarios');
+        Route::get('/users/profile',[ProfileController::class,'index'])->name('users.profile');
+        Route::post('/users/profile',[ProfileController::class,'update'])->name('users.profile.update');
+        Route::post('/users/profile/pass',[ProfileController::class,'pass'])->name('users.profile.save.pass');
+
 
     Route::get("logout",[LoginController::class,'logout'])->name("logout");
-});
+
 
 
 });

@@ -15,8 +15,8 @@ class CreateUtilizadosTable extends Migration
     {
         Schema::create('utilizados', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('tratamiento_id');
-            $table->unsignedBigInteger('insumo_id');
+            $table->foreignId('tratamiento_id')->nullable()->constrained('tratamientos')->cascadeOnUpdate()->nullOnDelete();
+            $table->foreignId('insumo_id')->nullable()->constrained('insumos')->cascadeOnUpdate()->nullOnDelete();
             $table->double('cantidad');
             $table->timestamps();
         });

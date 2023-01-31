@@ -14,6 +14,7 @@ class Servicios extends Component
     public $search;
     public $precio;
     public $servicio_id;
+    public $porcentaje_comision_servicio;
     public $selected;
 
     public function SelectServicio($id = 0){
@@ -23,6 +24,7 @@ class Servicios extends Component
         $this->codigo = $record->codigo;
         $this->selected = $record->descripcion;
         $this->precio = $record->precio;
+        $this->porcentaje_comision_servicio = $record->comision;
         $this->showdiv = false;
         $this->search = "";
     }
