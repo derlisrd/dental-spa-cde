@@ -76,6 +76,6 @@
 
 
         <div class="nav-item-divider"></div>
-        <a href="{{ route('logout') }}" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i> Salir </a>
+
     </nav>
 </div>

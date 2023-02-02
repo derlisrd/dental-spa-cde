@@ -30,7 +30,17 @@
             <header class='dashboard-toolbar'>
                 <span class="menu-toggle cursor-pointer"><i class="fas fa-bars"></i></span>
                 <div class="d-flex flex-row-reverse w-100">
-                    <small class="text-muted"> {{ Auth::user()->name }} <i class="fa fa-user"></i></small>
+
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ Auth::user()->name }} <i class="fa fa-user"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="{{ route('users.profile') }}"> <i class="fa fa-user"></i> Perfil</a>
+                          <a class="dropdown-item log_out" href="{{ route('logout') }}"> <i class="fas fa-sign-out-alt"></i> Cerrar</a>
+                        </div>
+                      </div>
+
                 </div>
             </header>
 
@@ -52,5 +62,20 @@
     <script src="{{ URL('assets/js/sweetalert2.min.js') }}"></script>
     @yield('scripts')
     @livewireScripts
+
+    <script>
+        $('.log_out').click(function(e){
+            e.preventDefault();
+            Swal.fire({
+            title: 'Salir',
+            text:'Desea cerrar sesion?',
+            showCancelButton: true,
+            }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "{{ route('logout') }}"
+            }
+            })
+        });
+    </script>
 </body>
 </html>

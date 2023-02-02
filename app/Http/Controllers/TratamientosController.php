@@ -42,7 +42,7 @@ class TratamientosController extends Controller
             'empleado_id'=> ['required'],
             'servicio_id'=> ['required'],
             'paciente_id'=>['required'],
-            'detalles'=>['string'],
+
             'abono'=>['numeric'],
             'valor_total'=>['required','numeric'],
             'forma_pago_id'=>'required',

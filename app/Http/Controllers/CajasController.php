@@ -29,7 +29,9 @@ class CajasController extends Controller
     }
     public function all_movimientos(){
 
-        return view('Cajas.allmovimientos');
+        $movimientos = CajasMovimiento::all();
+
+        return view('Cajas.allmovimientos',compact('movimientos'));
     }
 
 
