@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CajasFormasPago;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -30,5 +31,10 @@ class DatabaseSeeder extends Seeder
         $rol1 = Role::create(['name'=>'caja']);
         $find = User::find(1);
         $find->assignRole($rol1);
+
+        CajasFormasPago::create([
+            'descripcion'=>'Efectivo',
+            'porcentaje_descuento'=>0
+        ]);
     }
 }

@@ -15,6 +15,15 @@
             <i class="fas fa-home"></i>
             Inicio
         </a>
+        <div class='dashboard-nav-dropdown {{ request()->routeIs('cajas*') ? 'show' : '' }}'>
+            <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-box"></i>Arqueos Cajas </a>
+            <div class='dashboard-nav-dropdown-menu'>
+                <a href="{{ route('cajas') }}" class="dashboard-nav-dropdown-item {{ request()->routeIs('cajas') ? 'active' : '' }}">Cajas activas</a>
+            </div>
+            <div class='dashboard-nav-dropdown-menu'>
+                <a href="{{ route('cajas.all.movimientos') }}" class="dashboard-nav-dropdown-item {{ request()->routeIs('cajas.all.movimientos') ? 'active' : '' }}">Movimientos</a>
+            </div>
+        </div>
 
         <a href="{{ route('pacientes') }}" class="dashboard-nav-item {{ request()->routeIs('pacientes*') ? 'active' : '' }}">
             <i class="fas fa-hospital-user"></i>
@@ -30,6 +39,8 @@
             <i class="fas fa-briefcase-medical"></i>
             Servicios
         </a>
+
+
 
         <div class='dashboard-nav-dropdown {{ request()->routeIs('empleados*') ? 'show' : '' }}'>
             <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-users"></i> Empleados </a>

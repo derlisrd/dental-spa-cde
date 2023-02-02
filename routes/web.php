@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AbonosController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CajasController;
 use App\Http\Controllers\ComisionesController;
 use App\Http\Controllers\EmpleadosController;
 use App\Http\Controllers\FichasController;
@@ -36,6 +37,12 @@ Route::group(['prefix'=>'admin','middleware'=>['auth']],function(){
 
         Route::get('home', function () { return view('index');})->name('home');
 
+        Route::get('cajas',[CajasController::class,'index'])->name('cajas');
+        Route::get('cajas/create',[CajasController::class,'create'])->name('cajas.create');
+        Route::post('cajas/create',[CajasController::class,'store'])->name('cajas.store');
+        Route::get('cajas/{id}/movimientos',[CajasController::class,'movimientos'])->name('cajas.movimientos');
+        Route::get('cajas/movimientos/all',[CajasController::class,'all_movimientos'])->name('cajas.all.movimientos');
+
         Route::get('pacientes',[PacientesController::class,'index'])->name('pacientes');
         Route::view('pacientes/add','Pacientes.add')->name('pacientes.add');
         Route::post('pacientes/store',[PacientesController::class,'store'])->name('pacientes.store');
@@ -59,6 +66,7 @@ Route::group(['prefix'=>'admin','middleware'=>['auth']],function(){
         Route::view('empleados/add','Empleados.add')->name('empleados.add');
         Route::get('empleados/edit/{id}',[EmpleadosController::class,'edit'])->name('empleados.edit');
         Route::post('empleados/store',[EmpleadosController::class,'store'])->name('empleados.store');
+        Route::put('empleados/edit/{id}',[EmpleadosController::class,'update'])->name('empleados.update');
 
         Route::get('comisiones',[ComisionesController::class,'index'])->name('empleados.comisiones');
         Route::post('comisiones',[ComisionesController::class,'index'])->name('empleados.comisiones.search');

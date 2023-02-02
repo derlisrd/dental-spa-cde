@@ -35,7 +35,7 @@ class ServiciosController extends Controller
         ];
 
         Servicio::create($datos);
-        return redirect()->route('servicios');
+        return redirect()->route('servicios.add')->with('add',true);
     }
 
     public function show($id)

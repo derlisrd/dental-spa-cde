@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Abono;
+use App\Models\Caja;
 use App\Models\Comisiones;
 use App\Models\Empleado;
 use App\Models\Paciente;
 use App\Models\Servicio;
 use App\Models\Tratamiento;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TratamientosController extends Controller
 {
@@ -22,10 +24,12 @@ class TratamientosController extends Controller
 
     public function add()
     {
+        $id = Auth::id();
         $data = [
             'servicios'=>Servicio::all(),
             'empleados'=>Empleado::all(),
-            'pacientes'=>Paciente::all()
+            'pacientes'=>Paciente::all(),
+            'caja'=>Caja::where('user_id',$id)->get(),
         ];
         return view('Tratamientos.add',$data);
     }
@@ -54,6 +58,7 @@ class TratamientosController extends Controller
         $t = Tratamiento::create($datos);
 
         $comision_calculado = $request->valor_total * $request->porcentaje_comision_servicio / 100;
+
 
 
         Comisiones::create([

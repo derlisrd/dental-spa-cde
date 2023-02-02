@@ -12,13 +12,18 @@
         <h3>Agregar servicio</h3>
     </div>
     <div class="col-12">
+        <a href="{{ route('servicios') }}" class="btn btn-primary my-4">Volver</a>
+    </div>
+    <div class="col-12">
         <div class="card">
             <div class="card-body">
                 <form method="post" action="{{ route('servicios.store') }}">
                     @csrf
                     <div class="form-group mb-4">
-                        <input type="text" autofocus class="form-control @error('codigo') is-invalid @enderror" autocomplete="off" name="codigo" value="{{ old('codigo') }}" >
-                        <small class="form-text text-muted">Codigo {{ $errors->first('codigo') }}</small>
+                        <div class="form-floating my-3">
+                        <input required id="codigo" autofocus class="form-control @error('codigo') is-invalid @enderror" autocomplete="off" name="codigo" value="{{ old('codigo') }}" placeholder="Codigo" >
+                        <label for="codigo">Codigo {{ $errors->first('codigo') }}</label>
+                        </div>
                     </div>
                     <div class="form-group mb-4">
                         <input type="text" class="form-control @error('descripcion') is-invalid @enderror" autocomplete="off" name="descripcion" value="{{ old('descripcion') }}" >
@@ -46,5 +51,9 @@
 
 
 @section('scripts')
-
+<script>
+    @if (session('add'))
+        Swal.fire('Servicio agregado!','Ha sido agregado correctamente','success')
+    @endif
+</script>
 @endsection
