@@ -23,19 +23,19 @@
             </div>
 
 
-            <div class="col-12">
+            <div class="col-12 col-sm-6">
                 <div class="form-group mb-3">
                     @livewire('search.pacientes')
                 </div>
             </div>
-            <div class="col-12">
+            <div class="col-12 col-sm-6">
                 <div class="form-group mb-3">
                     @livewire('search.servicios')
                 </div>
             </div>
-            <div class="col-12">
+            <div class="col-12 col-sm-3">
                 <div class="form-group mb-3">
-                    <select required class="form-control @if ($errors->has('empleado_id')) is-invalid @endif"
+                    <select required class="form-select @if ($errors->has('empleado_id')) is-invalid @endif"
                         name="empleado_id" required>
                         <option selected disabled>Seleccione empleado</option>
                         @foreach ($empleados as $s)
@@ -46,7 +46,7 @@
                 </div>
             </div>
 
-            <div class="col-12 col-sm-6">
+            <div class="col-12 col-sm-3">
                 <div class="form-group mb-3">
                     <select required class="form-select @if ($errors->has('caja_id')) is-invalid @endif" name="caja_id"
                         required>
@@ -56,20 +56,31 @@
                     </select>
                     <small class="form-text text-muted">Caja</small>
                 </div>
-
-
             </div>
 
-            <div class="col-12 col-sm-6">
+            <div class="col-12 col-sm-3">
                 <div class="form-group mb-3">
                     <input class="form-control" autocomplete="off" name="abono_valor" value="{{ old('abono_valor') }}">
                     <small class="form-text text-muted">Abono o entrega</small>
                 </div>
             </div>
 
+            <div class="col-12 col-sm-3">
+                <div class="form-group mb-3">
+                    <select required class="form-select @if ($errors->has('forma_pago_id')) is-invalid @endif" name="forma_pago_id"
+                        required>
+                        @foreach ($formas_pago as $c)
+                            <option value="{{ $c->id }}">{{ $c->descripcion . ' ' . $c->porcentaje_descuento }} % </option>
+                        @endforeach
+                    </select>
+                    <small class="form-text text-muted">Forma de pago</small>
+                </div>
+            </div>
+
+
             <div class="col-12">
                 <div class="form-group mb-3">
-                    <input type="text" class="form-control" autocomplete="off" name="descripcion"
+                    <input type="text" class="form-control" autocomplete="off" name="detalles"
                         value="{{ old('detalles') }}">
                     <small class="form-text text-muted">Detalles</small>
                 </div>
