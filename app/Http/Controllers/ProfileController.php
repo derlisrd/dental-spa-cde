@@ -55,7 +55,7 @@ class ProfileController extends Controller
         if(Hash::check($r->old_password,$current_user->password)){
             $current= User::find($id);
             $current->password = Hash::make($r->new_password);
-            $current->save();
+            $current->update();
 
             return redirect()->back()->with('updatedpass','Contraseña cambiada');
         }

@@ -15,13 +15,17 @@
             <i class="fas fa-home"></i>
             Inicio
         </a>
-        <div class='dashboard-nav-dropdown {{ request()->routeIs('cajas*') ? 'show' : '' }}'>
+        <div class='dashboard-nav-dropdown {{ request()->routeIs('cajas*') ? 'show' : '' }}  '>
             <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-box"></i>Arqueos Cajas </a>
             <div class='dashboard-nav-dropdown-menu'>
                 <a href="{{ route('cajas') }}" class="dashboard-nav-dropdown-item {{ request()->routeIs('cajas') ? 'active' : '' }}">Cajas activas</a>
             </div>
             <div class='dashboard-nav-dropdown-menu'>
                 <a href="{{ route('cajas.all.movimientos') }}" class="dashboard-nav-dropdown-item {{ request()->routeIs('cajas.all.movimientos') ? 'active' : '' }}">Movimientos</a>
+            </div>
+
+            <div class='dashboard-nav-dropdown-menu'>
+                <a href="{{ route('cajas.formaspago') }}" class="dashboard-nav-dropdown-item {{ request()->routeIs('cajas.formaspago') ? 'active' : '' }}">Formas de pago</a>
             </div>
         </div>
 

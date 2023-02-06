@@ -55,6 +55,8 @@ class EmpleadosController extends Controller
             'labor'=>$r->labor,
         ];
 
+        Empleado::where('id',$id)->update($datos);
+
         return redirect()->route('empleados')->with('updated',true);
 
     }

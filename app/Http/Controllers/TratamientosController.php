@@ -27,10 +27,18 @@ class TratamientosController extends Controller
     public function add()
     {
         $id = Auth::id();
+
+        $caja = Caja::where('user_id',$id)->where('estado',1)->get();
+
+
+
+        if($caja->count()<1){
+            return view('Errores.hablitarcaja');
+        }
         $data = [
             'empleados'=>Empleado::all(),
             'formas_pago'=>CajasFormasPago::all(),
-            'caja'=>Caja::where('user_id',$id)->get(),
+            'caja'=>$caja,
         ];
         return view('Tratamientos.add',$data);
     }
@@ -58,12 +66,11 @@ class TratamientosController extends Controller
             'detalles'=>$request->detalles,
             'valor_total'=>$request->valor_total
         ];
+        //Se crea el tratamiento
         $t = Tratamiento::create($datos);
 
+        //calculando la comision total
         $comision_calculado = $request->valor_total * $request->porcentaje_comision_servicio / 100;
-
-
-
         Comisiones::create([
             'paciente_id'=>$request->paciente_id,
             'empleado_id'=> $request->empleado_id,
@@ -73,20 +80,36 @@ class TratamientosController extends Controller
             'valor_comision'=>$comision_calculado
         ]);
 
+
+
+        $abono = $request->abono_valor;
+
+        //abono del paciente
         Abono::create([
             'paciente_id'=>$request->paciente_id,
             'tratamiento_id'=>$t->id,
-            'abono_valor'=>$request->abono_valor
+            'abono_valor'=>$abono
         ]);
+
+
 
         $formas_pago = CajasFormasPago::find($request->forma_pago_id);
 
         $caja = Caja::find($request->caja_id);
+
+        $descuento =  '' ;
+
+        $porcentaje_descuento = $formas_pago->porcentaje_descuento;
+
         if($request->forma_pago_id == 1){
             $caja->monto_actual += $request->abono_valor;
         }else{
-            $caja->monto_sin_efectivo += $request->abono_valor;
+            $caja->monto_sin_efectivo += ($request->abono_valor -  (($request->abono_valor * $porcentaje_descuento)/100) );
+            $descuento = 'Descuento de '.$porcentaje_descuento;
+            $abono = $request->abono_valor - (($request->abono_valor * $porcentaje_descuento)/100);
         }
+
+
         $caja->update();
 
         CajasMovimiento::create([
@@ -94,9 +117,9 @@ class TratamientosController extends Controller
             'detalles'=>'Abono de tratamiento. '.$request->detalles,
             'caja_id'=>$request->caja_id,
             'monto'=> $request->forma_pago_id == 1 ? $request->abono_valor : 0,
-            'monto_sin_efectivo'=> $request->forma_pago_id == 1 ? 0 : $request->abono_valor,
+            'monto_sin_efectivo'=> $request->forma_pago_id == 1 ? 0 : $abono,
+            'Detalles'=> $descuento
         ]);
-
 
         return redirect()->route('utilizado.tratamiento.proceder',$t->id);
     }

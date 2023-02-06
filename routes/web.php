@@ -3,6 +3,7 @@
 use App\Http\Controllers\AbonosController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CajasController;
+use App\Http\Controllers\CajasFormasPagosController;
 use App\Http\Controllers\ComisionesController;
 use App\Http\Controllers\EmpleadosController;
 use App\Http\Controllers\FichasController;
@@ -42,6 +43,12 @@ Route::group(['prefix'=>'admin','middleware'=>['auth']],function(){
         Route::post('cajas/create',[CajasController::class,'store'])->name('cajas.store');
         Route::get('cajas/{id}/movimientos',[CajasController::class,'movimientos'])->name('cajas.movimientos');
         Route::get('cajas/movimientos/all',[CajasController::class,'all_movimientos'])->name('cajas.all.movimientos');
+
+        Route::get('formaspago',[CajasFormasPagosController::class,'index'])->name('cajas.formaspago');
+        Route::view('formaspago/create','CajasFormasPago.add')->name('cajas.formaspago.create');
+        Route::post('formaspago',[CajasFormasPagosController::class,'store'])->name('cajas.formaspago.store');
+        Route::get('formaspago/edit/{id}',[CajasFormasPagosController::class,'edit'])->name('cajas.formaspago.edit');
+        Route::put('formaspago/edit/{id}',[CajasFormasPagosController::class,'update'])->name('cajas.formaspago.update');
 
         Route::get('pacientes',[PacientesController::class,'index'])->name('pacientes');
         Route::view('pacientes/add','Pacientes.add')->name('pacientes.add');

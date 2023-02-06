@@ -30,8 +30,9 @@ class CajasController extends Controller
     public function all_movimientos(){
 
         $movimientos = CajasMovimiento::all();
+        $tipos = ['1'=>'Ingreso','0'=>'Egreso','2'=>'Apertura','4'=>'Cierre','5'=>'Neutro'];
 
-        return view('Cajas.allmovimientos',compact('movimientos'));
+        return view('Cajas.allmovimientos',compact('movimientos','tipos'));
     }
 
 
