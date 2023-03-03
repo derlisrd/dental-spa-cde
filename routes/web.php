@@ -59,6 +59,8 @@ Route::group(['prefix'=>'admin','middleware'=>['auth']],function(){
         Route::view('insumos/add','Insumos.add')->name('insumos.add');
         Route::post('insumos/store',[InsumosController::class,'store'])->name('insumos.store');
         Route::get('insumos/{id}',[InsumosController::class,'edit'])->name('insumos.edit');
+        Route::get('insumos/stock/{id}',[InsumosController::class,'edit_stock'])->name('insumos.edit.stock');
+        Route::put('insumos/stock',[InsumosController::class,'update_stock'])->name('insumos.update.stock');
 
 
         Route::get('tratamientos',[TratamientosController::class,'index'])->name('tratamientos');

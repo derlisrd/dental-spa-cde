@@ -17,9 +17,11 @@ class CreateInsumosTable extends Migration
             $table->id();
             $table->string('codigo')->unique();
             $table->string('nombre');
-            $table->double('valor',11);
+            $table->double('valor',11)->nullable();
+            $table->double('costo',20);
             $table->string('medida',15);
-            $table->float('cantidad');
+            $table->float('cantidad',15);
+            $table->float('uso_normal',15)->nullable();
             $table->timestamps();
         });
     }

@@ -10,5 +10,5 @@ class Insumo extends Model
     use HasFactory;
 
     protected $table = 'insumos';
-    protected $fillable = ['nombre','valor','cantidad','codigo','medida'];
+    protected $fillable = ['nombre','valor','cantidad','codigo','medida','costo','uso_normal'];
 }

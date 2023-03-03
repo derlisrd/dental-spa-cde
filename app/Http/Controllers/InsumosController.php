@@ -21,7 +21,9 @@ class InsumosController extends Controller
         $request->validate([
             'nombre'=> ['required'],
             'cantidad'=> ['required','numeric'],
-            'valor'=>['required','numeric'],
+            'valor'=>['numeric'],
+            'valor'=>['numeric','required'],
+            'uso_normal'=>'numeric',
             'medida'=>['required'],
             'codigo'=>['required','unique:insumos,codigo'],
         ]);
@@ -29,6 +31,8 @@ class InsumosController extends Controller
         $datos = [
             'nombre'=> $request->nombre,
             'valor'=> $request->valor,
+            'costo'=>$request->costo,
+            'uso_normal'=>$request->uso_normal,
             'cantidad'=>$request->cantidad,
             'medida'=>$request->medida,
             'codigo'=>$request->codigo
@@ -37,6 +41,28 @@ class InsumosController extends Controller
         Insumo::create($datos);
 
         return redirect()->route('insumos');
+    }
+
+    public function edit_stock($id){
+        $insumo = Insumo::findOrFail($id);
+
+        return view('Insumos.corregir',compact('insumo'));
+    }
+
+    public function update_stock(Request $r){
+
+        $id = $r->id;
+
+        $r->validate([
+            'cantidad'=> ['required','numeric'],
+        ]);
+
+
+        $insumo = Insumo::find($id);
+        $insumo->cantidad = $r->cantidad;
+        $insumo->update();
+
+        return redirect()->route('insumos')->with('corregido',true);
     }
 
 

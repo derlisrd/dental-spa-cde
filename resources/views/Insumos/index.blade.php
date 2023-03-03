@@ -34,7 +34,10 @@
                                 <td>{{ $i->cantidad }}</td>
                                 <td>{{ $i->medida }}</td>
                                 <td>{{ $i->valor }}</td>
-                                <td><a href="{{ route('insumos.edit', $i->id) }}" class="btn btn-primary">Editar</a></td>
+                                <td>
+                                    <a href="{{ route('insumos.edit', $i->id) }}" class="btn btn-primary">Editar</a>
+                                    <a href="{{ route('insumos.edit.stock', $i->id) }}" class="btn btn-secondary">Corregir cantidad</a>
+                                </td>
                             </tr>
                         @endforeach
 
